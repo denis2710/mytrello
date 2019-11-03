@@ -1,0 +1,56 @@
+1 instale:
+  typescript
+  sucrase:
+    sucrase transpila o codigo ts em js sem chcagem de tipos
+  nodemon
+
+  eslint
+  @typescript-eslitn/parser
+  @typeecript-eslint/eslint-plugin
+  prettier 
+  eslint-config-prettier
+  eslint-plugin-prettier
+
+---------------------------------------------------------------------------
+
+2 rode yarn eslint --init
+  com as opções enforce code style, js modules e standart
+  
+  2.1 delete o packgae-lock.json que o npm gera e rode um yarn para instalar
+      usando yarn as dependencias instaladas pelo eslint que usa npm por padrao
+
+---------------------------------------------------------------------------
+3 no .eslintrc.js
+  parser: @typescript-eslint/parser
+  plugins : ['@typescript-eslint']
+  extends: transforma em array e add :
+   'plugin:@typescript-eslint/recommended' ,
+   'prettier/@typescrpript-eslint'
+   'standard'
+
+---------------------------------------------------------------------------
+4 crie o arquivo /nodmeon.json
+  quais pastas estou observando?  watch: array
+  quais as extensoes ? ext : string
+  quando o arquivo de determinada extensão for atualizado, qual script eu rodo ? execMap
+
+---------------------------------------------------------------------------
+5 crie os scripts 
+  dev "nodemon src/server.ts"
+  build
+
+---------------------------------------------------------------------------
+
+================================================================================
+================================================================================
+===================              APLICAÇÅO         =============================
+================================================================================
+================================================================================
+
+1 instalar :
+    expres
+    cors
+    mongoose
+    @types/expres
+    @types/cors
+    @types/mongoose
