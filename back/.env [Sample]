@@ -1,0 +1,3 @@
+DB_USER=<Your Mongo Username>
+DB_PASSWORD=<Your Mongo Password>
+DB_DATABASE=<Your Mongo Database>
