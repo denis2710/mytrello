@@ -10,7 +10,6 @@ class ConfigDatabase {
         `mongodb+srv://${dbUser}:${dbPass}@cluster0-ejedw.mongodb.net/${dbDatabase}?retryWrites=true&w=majority`,
         { useNewUrlParser: true, useUnifiedTopology: true }
       )
-      console.log('database connected')
     } catch (error) {
       console.log(error)
     }

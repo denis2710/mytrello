@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 
 import ConfigDatabase from './config/database'
+import routes from './routes/routes'
 
 class App {
   public express: express.Application
@@ -16,9 +17,6 @@ class App {
     this.routes()
   }
 
-  private routes () : void {
-  }
-
   private middlewares ():void{
     this.express.use(express.json())
     this.express.use(cors())
@@ -28,6 +26,10 @@ class App {
 
   private database () : void {
     ConfigDatabase.connect()
+  }
+
+  private routes () : void {
+    this.express.use(routes)
   }
 }
 
