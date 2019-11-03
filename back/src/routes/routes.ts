@@ -1,11 +1,14 @@
 import { Router } from 'express'
+import RouterUser from './UserRoutes'
 
 class Routes {
-  public routes: Router
+  public router: Router
 
   constructor () {
-    this.routes = Router()
+    this.router = Router()
+
+    this.router.use(RouterUser)
   }
 }
 
-export default new Routes().routes
+export default new Routes().router
