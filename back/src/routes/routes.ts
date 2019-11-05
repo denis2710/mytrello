@@ -14,7 +14,7 @@ class Routes {
     this.routes.use(LoginRoutes)
     this.routes.use(UserRoutes)
     
-    this.routes.use(AuthController.authUser, BoardRoutes)
+    this.routes.use(AuthController.validateToken, BoardRoutes)
   }
 }
 

@@ -1,13 +1,5 @@
 import { Schema, model, Document } from 'mongoose'
-
-interface UserInterface extends Document { 
-    userId?: string, 
-    firstName: string,
-    lastName: string,
-    username: string,
-    password?:string,
-    email?: string,
-}
+import UserInterface from '../Interfaces/UserInterface'
 
 const userSchema = new Schema({
     userId: { 
@@ -35,7 +27,6 @@ const userSchema = new Schema({
     password: { 
         type: String, 
         required: false, 
-        maxlength: 50, 
         minlength: 3 
     },
     email: { 
