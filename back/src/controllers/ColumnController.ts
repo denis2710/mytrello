@@ -1,0 +1,5 @@
+class ColumController { 
+    public getAll(){
+        
+    }
+}
