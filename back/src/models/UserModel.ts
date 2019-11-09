@@ -9,11 +9,37 @@ interface UserInterface extends Document {
 }
 
 const UserSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  username: String,
-  email: String,
-  password: String
+  firstName: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50
+  },
+  lastName: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50
+  },
+  username: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50
+  },
+  email: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 255
+  },
+  password: {
+    type: String,
+    required: false,
+    minlength: 3,
+    maxlength: 50
+  },
+  isAdmin: Boolean
 }, {
   timestamps: true
 })
