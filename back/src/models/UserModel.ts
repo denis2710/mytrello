@@ -1,47 +1,43 @@
-import { Schema, model, Document } from 'mongoose'
+import { model, Schema } from 'mongoose'
+import UserInterface from '../Interfaces/UserInterface'
 
-interface UserInterface extends Document {
-  firstName: string,
-  lastName: string,
-  username: string,
-  email: string,
-  password?: string,
-}
-
-const UserSchema = new Schema({
+const userSchema = new Schema({
+  userId: {
+    type: String,
+    required: false
+  },
   firstName: {
     type: String,
     required: true,
-    minlength: 3,
-    maxlength: 50
+    maxlength: 50,
+    minlength: 3
   },
   lastName: {
     type: String,
     required: true,
-    minlength: 3,
-    maxlength: 50
+    maxlength: 50,
+    minlength: 3
   },
   username: {
     type: String,
     required: true,
-    minlength: 3,
-    maxlength: 50
-  },
-  email: {
-    type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 255
+    maxlength: 50,
+    minlength: 3
   },
   password: {
     type: String,
     required: false,
-    minlength: 3,
-    maxlength: 50
+    minlength: 3
   },
-  isAdmin: Boolean
+  email: {
+    type: String,
+    required: true,
+    maxlength: 100,
+    minlength: 3
+  }
+
 }, {
   timestamps: true
 })
 
-export default model<UserInterface>('user', UserSchema)
+export default model<UserInterface>('User', userSchema)
