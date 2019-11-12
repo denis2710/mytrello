@@ -11,6 +11,8 @@ class BoardRoutes {
         this.endpoint = '/board'
 
         this.router.get(this.endpoint, BoardController.getAll)
+        this.router.get(`${this.endpoint}/:id`, BoardController.findOne)
+        this.router.post(this.endpoint, BoardController.create)
     }
 }
 
