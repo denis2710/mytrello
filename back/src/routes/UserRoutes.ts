@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import UserController from '../controllers/UserController'
+import UserValidation from '../validations/UserValidation'
 
 class UserRoutes {
     public router: Router
@@ -9,7 +10,7 @@ class UserRoutes {
       this.router = Router()
       this.endpoint = '/user'
 
-      this.router.post(this.endpoint, UserController.create)
+      this.router.post(this.endpoint, UserValidation.createUser,  UserController.create)
     }
 }
 

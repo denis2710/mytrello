@@ -1,6 +1,4 @@
-import { Document } from 'mongoose'
-
-interface UserInterface extends Document { 
+interface UserInterface{ 
     userId?: string, 
     firstName: string,
     lastName: string,

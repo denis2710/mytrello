@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import UserModel from '../models/UserModel'
+import UserInterface from '../Interfaces/UserInterface'
 
 class UserController {
   public async index (req : Request, res: Response) : Promise<Response> {
@@ -8,8 +9,22 @@ class UserController {
     return res.json(users)
   }
 
-  public create (req : Request, res: Response) : Response {
-    return res.send('create user')
+  public async create (req : Request, res: Response) : Promise<Response> {
+    const { firstName, lastName, username, password, email }  = req.body 
+
+    const user : UserInterface = {
+      firstName,
+      lastName,
+      username,
+      password,
+      email,
+    }
+
+    
+
+    const newUser = await UserModel.create(user); 
+
+    return res.send(newUser)
   }
 
   public update (req : Request, res: Response) : Response {
