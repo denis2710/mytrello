@@ -31,7 +31,8 @@ const boardSchema = new Schema({
     maxlength: 50
   },
   creathor_id: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   members_id: {

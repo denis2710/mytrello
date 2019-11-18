@@ -40,6 +40,6 @@ const userSchema = new Schema({
   timestamps: true
 })
 
-type UserInterfaceDocument = UserInterface & Document
+type UserModelInterface = UserInterface & Document;
 
-export default model<UserInterfaceDocument>('User', userSchema)
+export default model<UserModelInterface>('User', userSchema)

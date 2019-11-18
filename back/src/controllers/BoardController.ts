@@ -1,6 +1,7 @@
 import { Response, Request } from "express"
 import AuthParams from "../Interfaces/AuthParams"
 import BoardModel from '../models/BoardModel'
+import UserModel from '../models/UserModel'
 import BoardInterface from "../Interfaces/BoardInterface"
 import CreateUserDto from "../dto/CreateBoardDTO"
 import IPrivacity from "../enums/PrivacityEnum"
@@ -18,10 +19,51 @@ class BoardController {
     }
 
     public async findOne (req: Request, res: Response) : Promise<Response> { 
-        const { uuserid } = <AuthParams>req.body.decoded
-        const id = req.params.id
-        const board = await BoardModel.findOne({ _id : id , '$or' : [{ user_creator : {'$in' : [uuserid] } }] })        
-        return res.send(board)
+        try {
+            const { uuserid } = <AuthParams>req.body.decoded
+            const id = req.params.id
+            
+            const board = await BoardModel.findOne({ 
+                '$and':
+                [
+                    { 
+                        _id : id 
+                    },
+                    {
+                        '$or': 
+                        [
+                            {creathor_id : uuserid },
+                            {
+                                members_id : 
+                                {
+                                    '$in': [uuserid]
+                                } 
+                            },
+                        ]
+                    }
+                ]  
+            }).populate('User')
+            
+            if(!board){ 
+                const notFoundResponse = { 
+                    code: 404,
+                    message: 'board not found'
+                }
+
+                return res.status(404).json(notFoundResponse)
+            }
+            
+            return res.send(board)
+        } catch (error) {
+
+            const errorResponseMessage = {
+                code: 500, 
+                message: error.message
+            }
+
+            return res.status(500).json(errorResponseMessage)
+        }
+        
     }
 
     public async create (req: Request, res: Response) : Promise<Response> {
@@ -37,6 +79,7 @@ class BoardController {
             const boardCreated : BoardInterface = await BoardModel.create(board)
             
             return res.send(boardCreated)
+
         } catch (error) {
             res.status(500).send(error.message)
         }
