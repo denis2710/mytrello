@@ -1,7 +1,7 @@
-interface AuthParams { 
+interface AuthParams {
     firstname: string
     username: string,
-    uuserid:string, 
+    uuserid:string,
     iat?: number,
     exp?: number
 }

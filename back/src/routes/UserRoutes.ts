@@ -9,7 +9,12 @@ class UserRoutes {
       this.router = Router()
       this.endpoint = '/user'
 
+      this.router.get(this.endpoint, UserController.findAll)
+      this.router.get(`${this.endpoint}/:id`, UserController.findById)
+
       this.router.post(this.endpoint, UserController.create)
+      this.router.patch(`${this.endpoint}/:id`, UserController.update)
+      this.router.delete(`${this.endpoint}/:id`, UserController.delete)
     }
 }
 
